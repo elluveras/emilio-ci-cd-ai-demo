@@ -1,0 +1,15 @@
+name: DeepSource Analysis
+
+on: [push, pull_request]
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run DeepSource analysis
+        uses: deepsourcelabs/cli-action@v1
+        env:
+          DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
